@@ -1,42 +1,283 @@
-# Indique aux robots que toutes les pages peuvent être explorées, sauf restrictions spécifiées
+# robots.txt v3.5 - 2025-05-28
+# Zoptymalizowany dla https://clairvoyancemedium.github.io/kapsu-ki-odchudzaj-ce-na-szybk-i-skuteczn-utrat-wagi.github.io/
+# Cele: Globalne SEO, częste indeksowanie, wsparcie dla AI/asystentów głosowych/mediów społecznościowych, wielojęzyczność, maksymalna ochrona
+
+# --- Ogólne dyrektywy dla wszystkich legalnych botów ---
 User-agent: *
-Disallow: /admin/
-Disallow: /tmp/
-Disallow: /private/
+Allow: /
+Allow: /[a-z]{2}/  # Strony wielojęzyczne (/pl/, /en/, /es/, itp.)
+Allow: /terms/     # Publiczne regulaminy
+Allow: /fonts/     # Czcionki dla renderowania
+Allow: /images/    # Obrazy do indeksacji
+Allow: /js/        # Skrypty interaktywne
+Allow: /css/       # CSS mobile-first
+Allow: /*.webp$    # Obrazy WebP
+Allow: /*.jpg$     # Obrazy JPG
+Allow: /*.png$     # Obrazy PNG
+Allow: /*.gif$     # Obrazy GIF
+Allow: /*.js$      # Skrypty JavaScript
+Allow: /*.css$     # Pliki CSS
+Disallow: /csp-report-endpoint/  # Ochrona CSP
+Disallow: /contact/             # Strona kontaktowa
+Disallow: /privacy/             # Polityka prywatności
+Disallow: /checkout/            # Ścieżki transakcyjne
+Disallow: /search/              # Strony wyszukiwania
+Disallow: /api/                 # Punkty końcowe API
+Disallow: /test/                # Katalogi testowe
+Disallow: /staging/             # Środowiska testowe
+Clean-param: utm_source&utm_medium&utm_campaign&lang&session_id  # Zezwól na przydatne parametry
 
-# Bloquer des URL avec paramètres inutiles pour l'indexation
-Disallow: /*?debug=true
-Disallow: /*?preview=true
-
-# Permettre les fichiers nécessaires au bon affichage et fonctionnement
-Allow: /css/
-Allow: /js/
-Allow: /images/
-
-# Référencement des ressources multimédias
-Allow: *.png
-Allow: *.jpg
-Allow: *.webp
-Allow: *.css
-Allow: *.js
-
-# Fournir le chemin du fichier sitemap pour une meilleure indexation
-Sitemap: https://www.clairvoyancemedium.com/sitemap.xml
-
-# Autorisation pour les robots Google et Bing pour maximiser les campagnes publicitaires
+# --- Dyrektywy dla Googlebot (Google, Google Assistant) ---
 User-agent: Googlebot
+Crawl-delay: 1
+Allow: /blog/      # Bogata treść dla SEO
+Allow: /article/   # Artykuły dla fragmentów
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- Dyrektywy dla Googlebot-Image ---
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.gif$
+Disallow: /favicon_optimized.webp  # Unikaj favicon
+
+# --- Dyrektywy dla Googlebot-Video ---
+User-agent: Googlebot-Video
+Crawl-delay: 1
 Allow: /
-User-agent: AdsBot-Google
-Allow: /
+Allow: /[a-z]{2}/
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- Dyrektywy dla Bingbot (Bing, Cortana) ---
 User-agent: Bingbot
+Crawl-delay: 2
+Allow: /blog/
+Allow: /article/
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- Dyrektywy dla Yandex (Yandex, Alice) ---
+User-agent: Yandex
+Crawl-delay: 3
+Allow: /blog/
+Allow: /article/
+Clean-param: utm_source&utm_medium&utm_campaign&lang&session_id
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- Dyrektywy dla Baiduspider (Chiny) ---
+User-agent: Baiduspider
+Crawl-delay: 3
+Allow: /zh/        # Priorytet dla chińskiego
+Allow: /blog/
+Allow: /article/
+Clean-param: lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+Disallow: /api/
+Disallow: /test/
+Disallow: /staging/
+
+# --- Dyrektywy dla Sogou (Chiny) ---
+User-agent: Sogou
+Crawl-delay: 4
+Allow: /zh/
+Allow: /blog/
+Allow: /article/
+Clean-param: lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+Disallow: /api/
+Disallow: /test/
+Disallow: /staging/
+
+# --- Dyrektywy dla Applebot (Siri, Apple) ---
+User-agent: Applebot
+Crawl-delay: 2
+Allow: /blog/
+Allow: /article/
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- Dyrektywy dla Amazonbot (Alexa, Amazon) ---
+User-agent: Amazonbot
+Crawl-delay: 3
+Allow: /blog/
+Allow: /article/
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- Dyrektywy dla Naverbot (Japonia/Korea) ---
+User-agent: Naverbot
+Crawl-delay: 3
+Allow: /ja/        # Priorytet dla japońskiego
+Allow: /ko/        # Priorytet dla koreańskiego
+Allow: /blog/
+Allow: /article/
+Clean-param: lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- Dyrektywy dla SeznamBot (Czechy) ---
+User-agent: SeznamBot
+Crawl-delay: 3
+Allow: /cs/        # Priorytet dla czeskiego
+Allow: /blog/
+Allow: /article/
+Clean-param: lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- Dyrektywy dla Qwantify (Qwant, Europa) ---
+User-agent: Qwantify
+Crawl-delay: 4
+Allow: /fr/        # Priorytet dla francuskiego
+Allow: /blog/
+Allow: /article/
+Clean-param: lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- Dyrektywy dla DuckDuckGoBot (Globalnie) ---
+User-agent: DuckDuckGoBot
+Crawl-delay: 2
 Allow: /
+Allow: /[a-z]{2}/
+Allow: /blog/
+Allow: /article/
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
 
-# Bloquer les robots nuisibles ou non désirés
-User-agent: BadBot
-Disallow: /
-User-agent: EvilScraper
+# --- Dyrektywy dla JioSphere (Indie) ---
+User-agent: JioSphere
+Crawl-delay: 3
+Allow: /hi/        # Priorytet dla hindi
+Allow: /blog/
+Allow: /article/
+Clean-param: lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- Dyrektywy dla botów AI konwersacyjnych ---
+User-agent: Grok
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: openai-crawler
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: cohere-ai
+User-agent: PerplexityBot
+User-agent: CCBot
+User-agent: youbot
+User-agent: phindbot
+User-agent: GeminiBot  # Google AI
+Crawl-delay: 4
+Allow: /
+Allow: /[a-z]{2}/
+Allow: /blog/      # Fragmenty konwersacyjne
+Allow: /article/
+Allow: /images/
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.gif$
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+Disallow: /api/
+Disallow: /test/
+Disallow: /staging/
+
+# --- Dyrektywy dla botów mediów społecznościowych ---
+User-agent: FacebookBot
+User-agent: Twitterbot
+User-agent: redditbot
+User-agent: TikTokBot  # Nowe media społecznościowe
+Crawl-delay: 2
+Allow: /
+Allow: /[a-z]{2}/
+Allow: /blog/      # Podglądy społecznościowe
+Allow: /article/
+Allow: /images/
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.gif$
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- Blokuj niepożądane boty ---
+User-agent: MJ12bot
+User-agent: AhrefsBot
+User-agent: PetalBot
+User-agent: DotBot
 Disallow: /
 
-# Empêcher l'exploration des fichiers sensibles
-Disallow: /config/
-Disallow: /backup/
+# --- Zezwól SemrushBot na audyty SEO ---
+User-agent: SemrushBot
+Crawl-delay: 5
+Allow: /
+Allow: /[a-z]{2}/
+Allow: /blog/
+Allow: /article/
+Allow: /images/
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.gif$
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- Ochrona przed nierozpoznanymi botami ---
+User-agent: *
+Disallow: /  # Blokuj domyślnie, chyba że wyraźnie zezwolono
+
+# --- Optymalizacja indeksowania ---
+Crawl-delay: 1
+Request-rate: 1/4  # 1 żądanie/4s dla szybkiego indeksowania
+
+# --- Indeks mapy strony ---
+Sitemap: https://clairvoyancemedium.github.io/kapsu-ki-odchudzaj-ce-na-szybk-i-skuteczn-utrat-wagi.github.io/sitemap-index.xml
